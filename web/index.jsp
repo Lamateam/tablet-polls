@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Test</title>
-    <link href='/main.css' rel='stylesheet' type='text/css'>
+    <link href='/css/main.css' rel='stylesheet' type='text/css'>
   </head>
   <body>
     <h1>Simple Java Web App Demo</h1>

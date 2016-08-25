@@ -29,17 +29,7 @@ module.exports = (grunt) ->
             '''
               <?xml version="1.0" encoding="UTF-8" ?>
               <web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
-                <servlet-mapping>
-                  <servlet-name>default</servlet-name>
-                  <url-pattern>*.css</url-pattern>
-                  <url-pattern>*.js</url-pattern>
-                  <url-pattern>*.png</url-pattern>
-                  <url-pattern>*.gif</url-pattern>
-                  <url-pattern>*.jpg</url-pattern>
-                  <url-pattern>*.swf</url-pattern>
-                  <url-pattern>*.htmlt</url-pattern>
-                  <url-pattern>*.htm</url-pattern>
-                </servlet-mapping>
+
               </web-app>
             '''
         files: [ { expand: true, cwd: 'dist', src: [ '**/*.*' ], dest: '' } ]
@@ -57,13 +47,13 @@ module.exports = (grunt) ->
         flatten: true,
         cwd: 'src/coffee/',
         src: [ '**/*.coffee' ],
-        dest: 'web/WEB-INF/js/',
+        dest: 'web/js/',
         ext: '.js'
 
     stylus:
       compile:
         files: [
-          { 'web/WEB-INF/css/main.css': 'src/stylus/main.styl' }
+          { 'web/css/main.css': 'src/stylus/main.styl' }
         ]
 
 
