@@ -6,3 +6,4 @@ tomcat/logs
 tomcat/webapps
 dist
 out
+web/WEB-INF

@@ -18,7 +18,11 @@ module.exports = (grunt) ->
     copy:
       web:
         files: [
-          { expand: true, cwd: 'web/', src: ['**/*.*'], dest: 'dist/' }
+          { expand: true, cwd: 'web/', src: [ '**/*.*' ], dest: 'dist/' }
+        ]
+      vendor:
+        files: [
+          { expand: true, cwd: 'node_modules/', src: [ '**/*.*' ], dest: 'dist/WEB-INF/vendor' }
         ]
     war:
       root:
@@ -65,6 +69,7 @@ module.exports = (grunt) ->
         files: [
           { 'web/WEB-INF/css/main.css': 'src/stylus/main.styl' }
         ]
+
 
 
 
