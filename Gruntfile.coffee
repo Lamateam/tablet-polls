@@ -29,6 +29,17 @@ module.exports = (grunt) ->
             '''
               <?xml version="1.0" encoding="UTF-8" ?>
               <web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
+                <servlet-mapping>
+                  <servlet-name>default</servlet-name>
+                  <url-pattern>*.css</url-pattern>
+                  <url-pattern>*.js</url-pattern>
+                  <url-pattern>*.png</url-pattern>
+                  <url-pattern>*.gif</url-pattern>
+                  <url-pattern>*.jpg</url-pattern>
+                  <url-pattern>*.swf</url-pattern>
+                  <url-pattern>*.htmlt</url-pattern>
+                  <url-pattern>*.htm</url-pattern>
+                </servlet-mapping>
               </web-app>
             '''
         files: [ { expand: true, cwd: 'dist', src: [ '**/*.*' ], dest: '' } ]
@@ -40,6 +51,22 @@ module.exports = (grunt) ->
           d: "dist/WEB-INF/classes"
         sourceFiles: [ "src/java/*.java", "src/java/servlets/*.java", "src/java/models/*.java" ]
 
+    coffee:
+      compile:
+        expand: true,
+        flatten: true,
+        cwd: 'src/coffee/',
+        src: [ '**/*.coffee' ],
+        dest: 'web/WEB-INF/js/',
+        ext: '.js'
+
+    stylus:
+      compile:
+        files: [
+          { 'web/WEB-INF/css/main.css': 'src/stylus/main.styl' }
+        ]
+
+
 
   # Load external Grunt task plugins.
   grunt.loadNpmTasks 'grunt-shell'
@@ -49,7 +76,9 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-run-java'
   grunt.loadNpmTasks 'grunt-contrib-copy'
   grunt.loadNpmTasks 'grunt-war'
+  grunt.loadNpmTasks 'grunt-contrib-coffee'
+  grunt.loadNpmTasks 'grunt-contrib-stylus'
 
   # Default task.
-  grunt.registerTask "compile", [ "clean", "mkdir", "run_java:javac_task", "copy", "war" ]
+  grunt.registerTask "compile", [ "clean", "mkdir", "coffee", "stylus", "run_java:javac_task", "copy", "war" ]
   grunt.registerTask "start", [ "tomcat:start" ]

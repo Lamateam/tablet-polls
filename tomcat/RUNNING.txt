@@ -355,7 +355,7 @@ Tomcat install:
 Optional Components
 ====================
 
-The following optional components may be included with the Apache Tomcat binary
+The following optional stylus may be included with the Apache Tomcat binary
 distribution. If they are not included, you can install them separately.
 
  1. Apache Tomcat Native library
@@ -368,10 +368,10 @@ architecture and it must match the Java Runtime Environment executables
 that will be used to launch Tomcat.
 
 The Windows-specific binary distributions of Apache Tomcat include binary
-files for these components. On other platforms you would have to look for
+files for these stylus. On other platforms you would have to look for
 binary versions elsewhere or compile them yourself.
 
-If you are new to Tomcat, do not bother with these components to start with.
+If you are new to Tomcat, do not bother with these stylus to start with.
 If you do use them, do not forget to read their documentation.
 
 
