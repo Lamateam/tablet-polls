@@ -60,6 +60,12 @@ module.exports = (grunt) ->
           { 'web/css/main.css': 'src/stylus/main.styl' }
         ]
 
+    concat:
+      basic:
+        src: [ 'dist/vendor/bootstrap/dist/css/bootstrap.css', 'dist/vendor/bootstrap/dist/css/bootstrap-theme.css', 'dist/vendor/sweetalert/dist/sweetalert.css', 'dist/css/main.css' ],
+        dest: 'dist/css/main.css'
+
+
 
 
 
@@ -73,7 +79,8 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-war'
   grunt.loadNpmTasks 'grunt-contrib-coffee'
   grunt.loadNpmTasks 'grunt-contrib-stylus'
+  grunt.loadNpmTasks 'grunt-contrib-concat'
 
   # Default task.
-  grunt.registerTask "compile", [ "clean", "mkdir", "coffee", "stylus", "run_java:javac_task", "copy", "war" ]
+  grunt.registerTask "compile", [ "clean", "mkdir", "coffee", "stylus", "run_java:javac_task", "copy", "concat", "war" ]
   grunt.registerTask "start", [ "tomcat:start" ]
