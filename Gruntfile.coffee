@@ -22,7 +22,7 @@ module.exports = (grunt) ->
         ]
       vendor:
         files: [
-          { expand: true, cwd: 'node_modules/', src: [ '**/*.*' ], dest: 'dist/WEB-INF/vendor' }
+          { expand: true, cwd: 'node_modules/', src: [ '**/*.*' ], dest: 'dist/vendor' }
         ]
     war:
       root:
