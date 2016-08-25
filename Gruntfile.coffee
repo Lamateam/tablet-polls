@@ -22,7 +22,7 @@ module.exports = (grunt) ->
         ]
       vendor:
         files: [
-          { expand: true, cwd: 'node_modules/', src: [ '**/*.*' ], dest: 'dist/vendor' }
+          { expand: true, cwd: 'node_modules/', src: [ 'bootstrap/**/*.*', 'jquery/**/*.*', 'requirejs/**/*.*', 'sweetalert/**/*.*', 'underscore/**/*.*' ], dest: 'dist/vendor' }
         ]
     war:
       root:
