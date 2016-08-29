@@ -1,3 +1,4 @@
+package api;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,9 +11,13 @@ import java.io.PrintWriter;
  * Created by Hleb on 25.08.2016.
  */
 
-@WebServlet("users")
+@WebServlet("/api/users")
 public class UsersServlet extends HttpServlet {
     @Override public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getRequestDispatcher("users.jsp").forward(request, response);
+    }
+    @Override public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        PrintWriter out = response.getWriter();
+        out.println("ok");
     }
 }
