@@ -92,4 +92,24 @@ public class AbstractModel {
         }
         return update(query + "WHERE id = '" + id + "'");
     }
+    //filter
+    public ResultSet filter(HashMap<String, String> props)
+    {
+        String query = "SELECT * FROM `" + tableName() + "` WHERE `";
+        Set keys = props.keySet();
+        for (Object key: keys) {
+            String value = props.get(key);
+            query = query + key + " = '" + value + "' ";
+        }
+
+        for (Object key: keys) {
+            String value = props.get(key);
+            query = query + String.join(" AND ", props.keySet());
+        }
+        return select(query);
+    }
+    }
+
+
+
 }
