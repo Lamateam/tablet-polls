@@ -12,30 +12,25 @@
                 <form>
                     <h1>Вход</h1>
                     <div>
-                        <input type="text" class="form-control" placeholder="Username" required="">
+                        <input type="text" class="form-control" placeholder="Логин" required="">
                     </div>
                     <div>
-                        <input type="password" class="form-control" placeholder="Password" required="">
+                        <input type="password" class="form-control" placeholder="Пароль" required="">
                     </div>
                     <div>
-                        <a class="btn btn-default submit" href="index.html">Log in</a>
+                        <a class="btn btn-default submit" href="index.html">Войти</a>
                         <a class="reset_pass" href="#">Забыли пароль?</a>
                     </div>
 
                     <div class="clearfix"></div>
 
                     <div class="separator">
-                        <p class="change_link">New to site?
+                        <p class="change_link">Еще не зарегистрированы?
                             <a href="#signup" class="to_register"> Создать аккаунт </a>
                         </p>
 
                         <div class="clearfix"></div>
                         <br>
-
-                        <div>
-                            <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
-                            <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
-                        </div>
                     </div>
                 </form>
             </section>
