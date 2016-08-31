@@ -43,7 +43,7 @@ module.exports = (grunt) ->
         javaOptions:
           classpath: [ "tomcat/lib/servlet-api.jar" ]
           d: "dist/WEB-INF/classes"
-        sourceFiles: [ "src/java/*.java", "src/java/servlets/*.java", "src/java/models/*.java" ]
+        sourceFiles: [ "src/java/*.java", "src/java/servlets/*.java", "src/java/servlets/api/*.java", "src/java/models/*.java" ]
 
     coffee:
       compile:
