@@ -1,8 +1,9 @@
-package java.models;
+package models;
 
 import java.sql.*;
 import java.util.HashMap;
 import java.util.Set;
+import java.util.HashSet;
 
 public class AbstractModel {
 
@@ -22,8 +23,8 @@ public class AbstractModel {
         try {
             if (conn == null) {
                 String userName = "root";
-                String password = "12345";
-                String url = "jdbc:mysql://localhost:3307/test";
+                String password = "cthutqcthutq67";
+                String url = "jdbc:mysql://localhost:3306/test";
                 try {
                     Class.forName("com.mysql.jdbc.Driver");
                 } catch (ClassNotFoundException ex) {
@@ -92,6 +93,7 @@ public class AbstractModel {
         }
         return update(query + "WHERE id = '" + id + "'");
     }
+<<<<<<< HEAD
      //filter
      public ResultSet filter(HashMap<String, String> props) {
          String query = "SELECT * FROM `" + tableName() + "` WHERE `";
@@ -107,4 +109,25 @@ public class AbstractModel {
          }
          return select(query);
      }
+=======
+    //filter
+    public ResultSet filter(HashMap<String, String> props)
+    {
+        String query = "SELECT * FROM `" + tableName() + "` WHERE ";
+        Set<String> keys = new HashSet<String>();
+
+        for (Object key: props.keySet()) {
+            String value = props.get(key);
+            keys.add("`" + key + "` = '" + value + "' ");
+        }
+
+        query = query + String.join(" AND ", keys);
+
+        return select(query);
+    }
+
+
+
+
+>>>>>>> origin/GruntTasks
 }

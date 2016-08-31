@@ -7,3 +7,4 @@ tomcat/webapps
 dist
 out
 web/WEB-INF
+src/java/models/AbstractModel.java
