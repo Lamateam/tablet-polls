@@ -41,7 +41,7 @@ module.exports = (grunt) ->
       javac_task:
         command: "javac",
         javaOptions:
-          classpath: [ "tomcat/lib/servlet-api.jar" ]
+          cp: [ "tomcat/lib/servlet-api.jar;tomcat/lib/json-simple-1.1.1.jar" ]
           d: "dist/WEB-INF/classes"
         sourceFiles: [ "src/java/*.java", "src/java/servlets/*.java", "src/java/servlets/api/*.java", "src/java/models/*.java" ]
 
