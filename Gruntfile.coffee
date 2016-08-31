@@ -22,7 +22,7 @@ module.exports = (grunt) ->
         ]
       vendor:
         files: [
-          { expand: true, cwd: 'node_modules/', src: [ 'bootstrap/**/*.*', 'jquery/**/*.*', 'requirejs/**/*.*', 'sweetalert/**/*.*', 'underscore/**/*.*' ], dest: 'dist/vendor' }
+          { expand: true, cwd: 'node_modules/', src: [ 'bootstrap/**/*.*', 'jquery/**/*.*', 'requirejs/**/*.*', 'sweetalert/**/*.*', 'gentelella/**/*.*' ], dest: 'dist/vendor' }
         ]
     war:
       root:
@@ -62,7 +62,7 @@ module.exports = (grunt) ->
 
     concat:
       basic:
-        src: [ 'dist/vendor/bootstrap/dist/css/bootstrap.css', 'dist/vendor/bootstrap/dist/css/bootstrap-theme.css', 'dist/vendor/sweetalert/dist/sweetalert.css', 'dist/css/main.css' ],
+        src: [ 'dist/vendor/bootstrap/dist/css/bootstrap.css', 'dist/vendor/bootstrap/dist/css/bootstrap-theme.css', 'dist/vendor/gentelella/build/css/custom.min.css', 'dist/vendor/sweetalert/dist/sweetalert.css', 'dist/css/main.css' ],
         dest: 'dist/css/main.css'
 
 
