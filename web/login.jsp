@@ -19,14 +19,14 @@
                     </div>
                     <div>
                         <a class="btn btn-default submit" href="index.html">Log in</a>
-                        <a class="reset_pass" href="#">Lost your password?</a>
+                        <a class="reset_pass" href="#">Забыли пароль?</a>
                     </div>
 
                     <div class="clearfix"></div>
 
                     <div class="separator">
                         <p class="change_link">New to site?
-                            <a href="#signup" class="to_register"> Create Account </a>
+                            <a href="#signup" class="to_register"> Создать аккаунт </a>
                         </p>
 
                         <div class="clearfix"></div>
