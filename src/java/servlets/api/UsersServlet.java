@@ -15,6 +15,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.JSONParser;
 import helpers.Convertor;
+import helpers.GetBody;
 
 /**
  * Created by Hleb on 25.08.2016.
@@ -43,11 +44,14 @@ public class UsersServlet extends HttpServlet {
     }
     @Override public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       try {
-          String json = request.getParameter("test");
+          GetBody getBody = new GetBody();
+          String json = getBody.getBody(request);
           JSONParser parser = new JSONParser();
           Object _obj = parser.parse(json);
-
           JSONObject obj = (JSONObject) _obj;
+
+          PrintWriter out = response.getWriter();
+          out.print(obj);
       } catch (Exception e) {
           e.printStackTrace();
       }
