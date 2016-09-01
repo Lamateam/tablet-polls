@@ -1,1 +1,9 @@
 node_modules
+.idea
+.tomcat
+tomcat/temp
+tomcat/logs
+tomcat/webapps
+dist
+out
+web/WEB-INF
