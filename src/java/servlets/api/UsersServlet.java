@@ -42,10 +42,14 @@ public class UsersServlet extends HttpServlet {
         }
     }
     @Override public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String json = request.getParameter("test");
-        JSONParser parser = new JSONParser();
-        Object _obj = parser.parse(json);
+      try {
+          String json = request.getParameter("test");
+          JSONParser parser = new JSONParser();
+          Object _obj = parser.parse(json);
 
-        JSONObject obj = (JSONObject) _obj;
+          JSONObject obj = (JSONObject) _obj;
+      } catch (Exception e) {
+          e.printStackTrace();
+      }
     }
 }
