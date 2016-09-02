@@ -16,7 +16,7 @@ import java.util.Random;
 public class RegistrationServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-            
+
         } catch (Exception e) {
             e.printStackTrace();
         }
