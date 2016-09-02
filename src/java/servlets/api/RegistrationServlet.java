@@ -12,9 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Random;
+import java.math.BigInteger;
 import helpers.Convertor;
 import helpers.RandomGenerator;
 import java.security.MessageDigest;
+import models.UserModel;
 
 
 @WebServlet(name = "RegistrationServlet")
@@ -33,7 +35,11 @@ public class RegistrationServlet extends HttpServlet {
 
                 MessageDigest md5 = MessageDigest.getInstance("MD5");
                 md5.update((stringPassword+salt).getBytes());
-
+                String newPassword = new BigInteger(1, md5.digest()).toString(16);
+                obj.put("password", newPassword);
+                String sql = "INSERT INTO `users` (`login`, `password`, `salt`) VALUES (`" + (String) obj.get("login") + "`,`" + (String) obj.get("password") + "`,`" + (String) obj.get("salt") + "`";
+                UserModel userConnector = new UserModel();
+                userConnector.update(sql);
             }
 
             PrintWriter out = response.getWriter();

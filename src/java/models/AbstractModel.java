@@ -50,7 +50,7 @@ public class AbstractModel {
         }
         return result1;
     }
-    private int update (String query) {
+    public int update (String query) {
         int result1 = 0;
         try {
             Statement statement = connect().createStatement();
