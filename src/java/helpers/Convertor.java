@@ -2,7 +2,17 @@ package helpers;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.JSONValue;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.sql.ResultSet;
+import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
+
 
 /**
  * Utility for converting ResultSets into some Output formats
@@ -85,10 +95,19 @@ public class Convertor {
     }
 
     public static JSONObject RequestToJSON(HttpServletRequest request) {
-        GetBody getBody = new GetBody();
-        String json = getBody(request);
-        JSONParser parser = new JSONParser();
-        Object _obj = parser.parse(json);
+        Object _obj = new Object();
+        try {
+            String json = getBody(request);
+            JSONParser parser = new JSONParser();
+            try {
+                _obj = parser.parse(json);
+            } catch (ParseException ex) {
+                ex.printStackTrace();
+            }
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
         return (JSONObject) _obj;
     }
 }

@@ -20,7 +20,7 @@ import helpers.Convertor;
  * Created by Hleb on 25.08.2016.
  */
 
-Convertor convertor = new Convertor();
+
 
 @WebServlet("/api/users")
 public class UsersServlet extends HttpServlet {
@@ -45,6 +45,7 @@ public class UsersServlet extends HttpServlet {
     }
     @Override public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       try {
+          Convertor convertor = new Convertor();
           JSONObject obj = convertor.RequestToJSON(request);
 
           PrintWriter out = response.getWriter();
