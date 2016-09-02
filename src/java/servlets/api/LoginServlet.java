@@ -16,6 +16,10 @@ import org.json.simple.JSONValue;
 import org.json.simple.parser.JSONParser;
 import helpers.Convertor;
 import models.UserModel;
+import java.security.MessageDigest;
+import java.util.Random;
+import java.math.BigInteger;
+import java.util.Objects;
 
 @WebServlet("/api/login")
 public class LoginServlet extends HttpServlet {
@@ -27,22 +31,27 @@ public class LoginServlet extends HttpServlet {
         try {
             Convertor convertor = new Convertor();
             JSONObject obj = convertor.RequestToJSON(request);
-            JSONArray _result = new JSONArray();
+            JSONObject _result = new JSONObject();
 
             String stringLogin = (String) obj.get("login");
             String stringPassword = (String) obj.get("password");
             if((stringLogin.length() != 0) && (stringPassword.length() != 0)) {
-                //RandomGenerator randomGenerator = new RandomGenerator();
-               // String salt = randomGenerator.getSaltString();
-                //obj.put("salt", salt);
-
-               // MessageDigest md5 = MessageDigest.getInstance("MD5");
-                //md5.update((stringPassword+salt).getBytes());
-
                 UserModel userConnector = new UserModel();
-                ResultSet user = userConnector.select("SELECT * FROM users WHERE `login` = '" + stringLogin + "'");
+                ResultSet users = userConnector.select("SELECT * FROM users WHERE `login` = '" + stringLogin + "'");
+                JSONObject user = null;
                 try {
-                    _result = convertor.convertToJSON(user);
+                    user = (JSONObject) convertor.convertToJSON(users).iterator().next();
+                    String _password = (String) user.get("password");
+                    String salt = (String) user.get("salt");
+
+                    MessageDigest md5 = MessageDigest.getInstance("MD5");
+                    md5.update((stringPassword+salt).getBytes());
+                    String newPassword = new BigInteger(1, md5.digest()).toString(16);
+
+                    System.out.println(_password);
+                    System.out.println(newPassword);
+
+                    _result.put("success", Objects.equals(_password, newPassword));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
