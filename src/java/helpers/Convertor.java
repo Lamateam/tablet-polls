@@ -34,8 +34,8 @@ public class Convertor {
             for (int i = 0; i < total_rows; i++) {
                 obj.put(resultSet.getMetaData().getColumnLabel(i + 1)
                         .toLowerCase(), resultSet.getObject(i + 1));
-                jsonArray.add(obj);
             }
+            jsonArray.add(obj);
         }
         return jsonArray;
     }

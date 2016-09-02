@@ -40,7 +40,7 @@ public class AbstractModel {
         return conn;
     }
     //List
-    private ResultSet select (String query) {
+    public ResultSet select (String query) {
         ResultSet result1 = null;
         try {
             Statement statement = connect().createStatement();

@@ -36,9 +36,7 @@ public class UsersServlet extends HttpServlet {
             response.setCharacterEncoding("utf8");
             response.setContentType("application/json");
             PrintWriter out = response.getWriter();
-            JSONObject obj = new JSONObject();
-            obj.put("data", users_json);
-            out.print(obj);
+            out.print(users_json);
         } catch (Exception e) {
             e.printStackTrace();
         }
