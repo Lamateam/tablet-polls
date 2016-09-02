@@ -19,12 +19,13 @@ import java.security.MessageDigest;
 import models.UserModel;
 
 
-@WebServlet(name = "RegistrationServlet")
+@WebServlet("/api/registration")
 public class RegistrationServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             Convertor convertor = new Convertor();
             JSONObject obj = convertor.RequestToJSON(request);
+            JSONObject result = new JSONObject();
 
             String stringLogin = (String) obj.get("login");
             String stringPassword = (String) obj.get("password");
@@ -37,13 +38,14 @@ public class RegistrationServlet extends HttpServlet {
                 md5.update((stringPassword+salt).getBytes());
                 String newPassword = new BigInteger(1, md5.digest()).toString(16);
                 obj.put("password", newPassword);
-                String sql = "INSERT INTO `users` (`login`, `password`, `salt`) VALUES (`" + (String) obj.get("login") + "`,`" + (String) obj.get("password") + "`,`" + (String) obj.get("salt") + "`";
+                String sql = "INSERT INTO users (`login`, `password`, `salt`) VALUES ('" + (String) obj.get("login") + "','" + (String) obj.get("password") + "','" + (String) obj.get("salt") + "')";
+                System.out.println(sql);
                 UserModel userConnector = new UserModel();
-                userConnector.update(sql);
+                result.put("success", userConnector.update(sql));
             }
 
             PrintWriter out = response.getWriter();
-            out.print(obj);
+            out.print(result);
         } catch (Exception e) {
             e.printStackTrace();
         }
