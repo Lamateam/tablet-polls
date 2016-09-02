@@ -44,14 +44,14 @@ public class UsersServlet extends HttpServlet {
         }
     }
     @Override public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-      try {
-          Convertor convertor = new Convertor();
-          JSONObject obj = convertor.RequestToJSON(request);
+        try {
+            Convertor convertor = new Convertor();
+            JSONObject obj = convertor.RequestToJSON(request);
 
-          PrintWriter out = response.getWriter();
-          out.print(obj);
-      } catch (Exception e) {
-          e.printStackTrace();
-      }
+            PrintWriter out = response.getWriter();
+            out.print(obj);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
