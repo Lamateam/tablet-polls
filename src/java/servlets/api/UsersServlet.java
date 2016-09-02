@@ -15,11 +15,12 @@ import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.JSONParser;
 import helpers.Convertor;
-import helpers.GetBody;
 
 /**
  * Created by Hleb on 25.08.2016.
  */
+
+Convertor convertor = new Convertor();
 
 @WebServlet("/api/users")
 public class UsersServlet extends HttpServlet {
@@ -44,11 +45,7 @@ public class UsersServlet extends HttpServlet {
     }
     @Override public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       try {
-          GetBody getBody = new GetBody();
-          String json = getBody.getBody(request);
-          JSONParser parser = new JSONParser();
-          Object _obj = parser.parse(json);
-          JSONObject obj = (JSONObject) _obj;
+          JSONObject obj = convertor.RequestToJSON(request);
 
           PrintWriter out = response.getWriter();
           out.print(obj);
