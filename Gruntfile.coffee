@@ -22,7 +22,16 @@ module.exports = (grunt) ->
         ]
       vendor:
         files: [
-          { expand: true, cwd: 'node_modules/', src: [ 'bootstrap/**/*.*', 'jquery/**/*.*', 'requirejs/**/*.*', 'sweetalert/**/*.*', 'gentelella/**/*.*' ], dest: 'dist/vendor' }
+          { expand: true, cwd: 'node_modules/', src: [
+            'angular/**/*.*'
+            'angular-resource/**/*.*'
+            'angular-route/**/*.*'
+            'bootstrap/**/*.*'
+            'jquery/**/*.*'
+            'requirejs/**/*.*'
+            'sweetalert/**/*.*'
+            'gentelella/**/*.*'
+          ], dest: 'dist/vendor' }
         ]
     war:
       root:
@@ -43,7 +52,7 @@ module.exports = (grunt) ->
         javaOptions:
           cp: [ "tomcat/lib/servlet-api.jar;tomcat/lib/json-simple-1.1.1.jar" ]
           d: "dist/WEB-INF/classes"
-        sourceFiles: [ "src/java/*.java", "src/java/servlets/*.java", "src/java/servlets/api/*.java", "src/java/models/*.java" ]
+        sourceFiles: [ "src/java/*.java", "src/java/servlets/*.java", "src/java/helpers/*.java", "src/java/servlets/api/*.java", "src/java/models/*.java" ]
 
     coffee:
       compile:
