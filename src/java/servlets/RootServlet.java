@@ -4,16 +4,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 
-@WebServlet("/login")
-public class LoginServlet extends HttpServlet {
-    @Override public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+@WebServlet("")
+public class RootServlet extends HttpServlet {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             if (request.getSession().getAttribute("user") != null) {
                 response.sendRedirect("/profile");
             } else {
-                request.getRequestDispatcher("login.jsp").forward(request, response);
+                response.sendRedirect("/login");
             }
         } catch (Exception e) {
             e.printStackTrace();

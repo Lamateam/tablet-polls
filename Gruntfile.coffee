@@ -22,7 +22,16 @@ module.exports = (grunt) ->
         ]
       vendor:
         files: [
-          { expand: true, cwd: 'node_modules/', src: [ 'bootstrap/**/*.*', 'jquery/**/*.*', 'requirejs/**/*.*', 'sweetalert/**/*.*', 'gentelella/**/*.*' ], dest: 'dist/vendor' }
+          { expand: true, cwd: 'node_modules/', src: [
+            'angular/**/*.*'
+            'angular-resource/**/*.*'
+            'angular-route/**/*.*'
+            'bootstrap/**/*.*'
+            'jquery/**/*.*'
+            'requirejs/**/*.*'
+            'sweetalert/**/*.*'
+            'gentelella/**/*.*'
+          ], dest: 'dist/vendor' }
         ]
     war:
       root:
