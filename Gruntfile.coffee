@@ -52,7 +52,14 @@ module.exports = (grunt) ->
         javaOptions:
           cp: [ "tomcat/lib/servlet-api.jar;tomcat/lib/json-simple-1.1.1.jar" ]
           d: "dist/WEB-INF/classes"
-        sourceFiles: [ "src/java/*.java", "src/java/servlets/*.java", "src/java/helpers/*.java", "src/java/servlets/api/*.java", "src/java/models/*.java" ]
+        sourceFiles: [
+            "src/java/*.java"
+            "src/java/servlets/*.java"
+            "src/java/helpers/*.java"
+            "src/java/servlets/api/*.java"
+            "src/java/models/*.java"
+            "src/java/servlets/api/cards/*.java"
+        ]
 
     coffee:
       compile:

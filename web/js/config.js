@@ -11,6 +11,12 @@
       "angular-resource": "../vendor/angular-resource/angular-resource.min"
     },
     shim: {
+      "angular-route": {
+        deps: ["angular"]
+      },
+      "angular-resource": {
+        deps: ["angular"]
+      },
       "bootstrap": {
         deps: ["jquery"]
       },
