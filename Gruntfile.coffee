@@ -10,7 +10,7 @@ module.exports = (grunt) ->
     tomcat:
       options:
         docBase: "web"
-    clean: [ "tomcat/webapps", "dist" ]
+    clean: [ "tomcat/webapps", "dist", "web/js", "web/css" ]
     mkdir:
       dist:
         options:
@@ -31,6 +31,7 @@ module.exports = (grunt) ->
             'requirejs/**/*.*'
             'sweetalert/**/*.*'
             'gentelella/**/*.*'
+            'ng-dialog/**/*.*'
           ], dest: 'dist/vendor' }
         ]
     war:
@@ -52,16 +53,20 @@ module.exports = (grunt) ->
         javaOptions:
           cp: [ "tomcat/lib/servlet-api.jar;tomcat/lib/json-simple-1.1.1.jar" ]
           d: "dist/WEB-INF/classes"
-        sourceFiles: [ "src/java/*.java", "src/java/servlets/*.java", "src/java/helpers/*.java", "src/java/servlets/api/*.java", "src/java/models/*.java" ]
+        sourceFiles: [ "src/java/*.java", "src/java/servlets/*.java", "src/java/helpers/*.java", "src/java/servlets/api/*.java", "src/java/models/*.java", "src/java/servlets/api/users/*.java" ]
+
 
     coffee:
       compile:
-        expand: true,
-        flatten: true,
-        cwd: 'src/coffee/',
-        src: [ '**/*.coffee' ],
-        dest: 'web/js/',
-        ext: '.js'
+        files: [
+          expand: true
+          cwd: 'src/coffee/'
+          src: [ '**/*.coffee' ]
+          dest: 'web/js/'
+          ext: '.js'
+          extDot: 'last'
+        ]
+
 
     stylus:
       compile:
