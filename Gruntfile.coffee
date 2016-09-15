@@ -2,6 +2,7 @@
 # version necessary to run these tasks is Grunt 0.4.
 #
 # Please install this locally and install `grunt-cli` globally to run.
+
 module.exports = (grunt) ->
   
   # Initialize the configuration.
@@ -53,7 +54,16 @@ module.exports = (grunt) ->
         javaOptions:
           cp: [ "tomcat/lib/servlet-api.jar;tomcat/lib/json-simple-1.1.1.jar" ]
           d: "dist/WEB-INF/classes"
-        sourceFiles: [ "src/java/*.java", "src/java/servlets/*.java", "src/java/helpers/*.java", "src/java/servlets/api/*.java", "src/java/models/*.java", "src/java/servlets/api/users/*.java" ]
+
+        sourceFiles: [
+          "src/java/*.java"
+          "src/java/servlets/*.java"
+          "src/java/helpers/*.java"
+          "src/java/servlets/api/*.java"
+          "src/java/models/*.java"
+          "src/java/servlets/api/users/*.java"
+          "src/java/servlets/api/cards/*.java"
+        ]
 
 
     coffee:
@@ -96,5 +106,5 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-concat'
 
   # Default task.
-  grunt.registerTask "compile", [ "clean", "mkdir", "coffee", "stylus", "run_java:javac_task", "copy", "concat", "war" ]
+  grunt.registerTask "default", [ "clean", "mkdir", "coffee", "stylus", "run_java:javac_task", "copy", "concat", "war" ]
   grunt.registerTask "start", [ "tomcat:start" ]
