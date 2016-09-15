@@ -56,23 +56,14 @@ module.exports = (grunt) ->
           d: "dist/WEB-INF/classes"
 
         sourceFiles: [
-<<<<<<< HEAD
+
             "src/java/*.java"
             "src/java/servlets/*.java"
             "src/java/helpers/*.java"
             "src/java/servlets/api/*.java"
             "src/java/models/*.java"
+            "src/java/servlets/api/users/*.java"
             "src/java/servlets/api/cards/*.java"
-
-=======
-          "src/java/*.java"
-          "src/java/servlets/*.java"
-          "src/java/helpers/*.java"
-          "src/java/servlets/api/*.java"
-          "src/java/models/*.java"
-          "src/java/servlets/api/users/*.java"
-          "src/java/servlets/api/cards/*.java"
->>>>>>> 5d7bf5c81eeb0677b70dfa44b3f0f68dd4a42f58
         ]
 
 
@@ -116,5 +107,5 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-concat'
 
   # Default task.
-  grunt.registerTask "default", [ "clean", "mkdir", "coffee", "stylus", "run_java:javac_task", "copy", "concat", "war" ]
+  grunt.registerTask "compile", [ "clean", "mkdir", "coffee", "stylus", "run_java:javac_task", "copy", "concat", "war" ]
   grunt.registerTask "start", [ "tomcat:start" ]

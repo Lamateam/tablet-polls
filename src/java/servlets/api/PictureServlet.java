@@ -51,21 +51,19 @@ public class PictureServlet extends HttpServlet {
 
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        String description = request.getParameter("description"); // Retrieves <input type="text" name="description">
-        Part filePart = request.getPart("file"); // Retrieves <input type="file" name="file">
-
+    protected void doPost(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
         try {
-            String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
+            InputStream in = req.getInputStream();
+            RandomGenerator randomGenerator = new RandomGenerator();
+            String fileName = randomGenerator.getSaltString() + ".jpg";
+            OutputStream out = new FileOutputStream("C:\\Users\\Toki\\Documents\\GitHub\\tablet-polls\\images\\" + fileName);
+            String fileType = FacesContext.getCurrentInstance(fileName);
+            copy(in, out);
+            out.flush();
+            out.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        InputStream fileContent = filePart.getInputStream();
-
-        PrintWriter out = response.getWriter();
-        out.print(fileContent);
-
     }
 }
 
@@ -96,4 +94,24 @@ public class PictureServlet extends HttpServlet {
         }catch (Exception e) {
             e.printStackTrace();
         }
+    }*/
+
+
+/*
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        String description = request.getParameter("description"); // Retrieves <input type="text" name="description">
+        Part filePart = request.getPart("file"); // Retrieves <input type="file" name="file">
+
+        try {
+            String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        InputStream fileContent = filePart.getInputStream();
+
+        PrintWriter out = response.getWriter();
+        out.print(fileContent);
+
     }*/
