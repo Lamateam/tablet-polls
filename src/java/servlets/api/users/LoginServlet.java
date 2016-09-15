@@ -1,4 +1,4 @@
-package api;
+package java.servlets.api.users;
 
 import java.sql.*;
 import javax.servlet.ServletException;
@@ -26,7 +26,7 @@ import java.util.Objects;
 
 
 
-@WebServlet("/api/login")
+@WebServlet("/api/users/login")
 public class LoginServlet extends HttpServlet {
     @Override public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

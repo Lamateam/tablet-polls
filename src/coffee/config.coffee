@@ -1,6 +1,6 @@
 
 require.config
-  baseUrl: 'vendor'
+  baseUrl: 'js'
   paths:
     "bootstrap": "../vendor/bootstrap/dist/js/bootstrap.min"
     "gentella": "../vendor/gentelella/build/css/custom.min.css"
@@ -9,7 +9,13 @@ require.config
     "angular": "../vendor/angular/angular.min"
     "angular-route": "../vendor/angular-route/angular-route.min"
     "angular-resource": "../vendor/angular-resource/angular-resource.min"
+    "ng-dialog": "../vendor/ng-dialog/js/ngDialog.min"
+    "common":"app/common"
   shim:
+    "angular":
+      exports: "angular"
+    "ng-dialog":
+      deps: [ "angular" ]
     "angular-route":
       deps: [ "angular" ]
     "angular-resource":
@@ -18,6 +24,7 @@ require.config
       deps: [ "jquery" ]
     "angular-bootstrap":
       deps: [ "bootstrap", "jquery" ]
+
 
 require [ window.currentPage + "/app" ], (App)->
   new App()
