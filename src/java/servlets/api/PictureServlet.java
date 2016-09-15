@@ -1,3 +1,4 @@
+
 package api;
 
 
@@ -50,9 +51,9 @@ public class PictureServlet extends HttpServlet {
 
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-       /* String description = request.getParameter("description"); // Retrieves <input type="text" name="description">
+        String description = request.getParameter("description"); // Retrieves <input type="text" name="description">
         Part filePart = request.getPart("file"); // Retrieves <input type="file" name="file">
 
         try {
@@ -63,19 +64,11 @@ public class PictureServlet extends HttpServlet {
         InputStream fileContent = filePart.getInputStream();
 
         PrintWriter out = response.getWriter();
-        out.print(fileContent);*/
-
-        InputStream in = req.getInputStream();
-        RandomGenerator randomGenerator = new RandomGenerator();
-        String fileName = randomGenerator.getSaltString() + ".jpg";
-        OutputStream out = new FileOutputStream("C:\\Users\\Toki\\Documents\\GitHub\\tablet-polls\\images\\" + fileName);
-        copy(in, out);
-        out.flush();
-        out.close();
-
+        out.print(fileContent);
 
     }
 }
+
 
 
 
@@ -87,7 +80,7 @@ public class PictureServlet extends HttpServlet {
     OutputStream out = new FileOutputStream("C:\\Users\\Toki\\Documents\\GitHub\\tablet-polls\\images\\" + fileName);
     copy(in, out);
         out.flush();
-                out.close();*/
+                out.close();*     (вариант без форматов, заменить полностью DoPost  /
 
    /* @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
