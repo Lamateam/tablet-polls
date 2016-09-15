@@ -52,7 +52,7 @@ public class PictureServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
-        try {
+       /* try {
             InputStream in = req.getInputStream();
             RandomGenerator randomGenerator = new RandomGenerator();
             String fileName = randomGenerator.getSaltString() + ".jpg";
@@ -63,7 +63,7 @@ public class PictureServlet extends HttpServlet {
             out.close();
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
     }
 }
 
