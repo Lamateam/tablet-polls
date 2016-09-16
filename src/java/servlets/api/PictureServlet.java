@@ -7,6 +7,8 @@ import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.annotation.WebServlet;
+
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.fileupload.FileItem;
@@ -15,6 +17,9 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.output.*;
 
+
+
+@WebServlet("/api/picture")
 public class PictureServlet extends HttpServlet {
 
     private boolean isMultipart;
@@ -41,7 +46,7 @@ public class PictureServlet extends HttpServlet {
         // maximum size that will be stored in memory
         factory.setSizeThreshold(maxMemSize);
         // Location to save data that is larger than maxMemSize.
-        factory.setRepository(new File("c:\\temp"));
+        factory.setRepository(new File("C:\\Users\\Toki\\Documents\\GitHub\\tablet-polls\\images\\"));
 
         // Create a new file upload handler
         ServletFileUpload upload = new ServletFileUpload(factory);
