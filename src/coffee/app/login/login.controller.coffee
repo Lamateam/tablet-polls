@@ -4,10 +4,13 @@ define [ 'app/app' ], ->
 class LoginController
   constructor: (@UsersService, @window)->
     @data = { login: '', password: '' }
-  login: (form)->
+  login: (form, $event)->
+    $event.preventDefault()
     if form.$valid
       @UsersService
       .login @data
       .then (data)=>
-        if data.message is undefined
+        if data.success is 1
           @window.location.href = '/profile'
+       
+ 

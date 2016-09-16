@@ -11,7 +11,7 @@
         }
         angular.module('app').config(function($routeProvider, $httpProvider) {
           $routeProvider.when('/login', {
-            templateUrl: '/templates/login.html',
+            templateUrl: '/templates/login/main.html',
             controller: 'LoginController',
             controllerAs: 'LoginController'
           }).otherwise({

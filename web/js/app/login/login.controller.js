@@ -15,11 +15,12 @@
       };
     }
 
-    LoginController.prototype.login = function(form) {
+    LoginController.prototype.login = function(form, $event) {
+      $event.preventDefault();
       if (form.$valid) {
         return this.UsersService.login(this.data).then((function(_this) {
           return function(data) {
-            if (data.message === void 0) {
+            if (data.success === 1) {
               return _this.window.location.href = '/profile';
             }
           };
