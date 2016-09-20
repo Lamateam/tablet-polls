@@ -52,7 +52,7 @@ module.exports = (grunt) ->
       javac_task:
         command: "javac",
         javaOptions:
-          cp: [ "tomcat/lib/servlet-api.jar;tomcat/lib/json-simple-1.1.1.jar;tomcat/lib/javax.faces-api-2.2.jar;tomcat/lib/javax.servlet-api-3.1.0;tomcat/lib/commons-fileupload-1.3.jar;tomcat/lib/commons-io-2.5.jar" ]
+          cp: [ "tomcat/lib/servlet-api.jar;tomcat/lib/json-simple-1.1.1.jar;tomcat/lib/javax.faces-api-2.2.jar;tomcat/lib/javax.servlet-api-3.1.0;tomcat/lib/commons-fileupload-1.3.jar;tomcat/lib/commons-io-2.5.jar;tomcat/lib/javax.mail.jar" ]
           d: "dist/WEB-INF/classes"
 
         sourceFiles: [

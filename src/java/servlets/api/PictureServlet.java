@@ -9,6 +9,34 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.annotation.WebServlet;
 
+
+import java.io.File;
+import java.sql.*;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.Part;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.PrintWriter;
+import java.util.HashMap;
+import helpers.Convertor;
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.FileOutputStream;
+import helpers.RandomGenerator;
+import java.lang.Object;
+import java.nio.file.Paths;
+import javax.faces.context.FacesContext;
+import javax.faces.application.FacesMessage;
+import javax.servlet.http.HttpServlet;
+import javax.faces.context.FacesContextWrapper;
+
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.fileupload.FileItem;
@@ -17,13 +45,28 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.output.*;
 
+import javax.activation.MimetypesFileTypeMap;
 
 
 @WebServlet("/api/picture")
 public class PictureServlet extends HttpServlet {
 
+
+    protected static long copy(InputStream input, OutputStream output)
+            throws IOException {
+        byte[] buffer = new byte[4096];
+        long count = 0L;
+        int n = 0;
+        while (-1 != (n = input.read(buffer))) {
+            output.write(buffer, 0, n);
+            count += n;
+        }
+        return count;
+    }
+
     private boolean isMultipart;
     private String filePath;
+    private String fileName;
     private int maxFileSize = 50 * 1024;
     private int maxMemSize = 4 * 1024;
     private File file ;
@@ -31,7 +74,7 @@ public class PictureServlet extends HttpServlet {
     public void init( ){
         // Get the file location where it would be stored.
         filePath =
-                getServletContext().getInitParameter("file-upload");
+                getServletContext().getInitParameter("C:\\Users\\Toki\\Documents\\GitHub\\tablet-polls\\images\\");
     }
     public void doPost(HttpServletRequest request,
                        HttpServletResponse response)
@@ -82,6 +125,8 @@ public class PictureServlet extends HttpServlet {
                     }
                     fi.write( file ) ;
                     out.println("Uploaded Filename: " + fileName + "<br>");
+
+
                 }
             }
 
@@ -89,14 +134,10 @@ public class PictureServlet extends HttpServlet {
             System.out.println(ex);
         }
     }
-    public void doGet(HttpServletRequest request,
-                      HttpServletResponse response)
-            throws ServletException, java.io.IOException {
 
-        throw new ServletException("GET method used with " +
-                getClass( ).getName( )+": POST method required.");
-    }
 }
+
+
 
 
 
@@ -145,7 +186,6 @@ public class PictureServlet extends HttpServlet {
 
 
 /*
-
 package api;
 
 
@@ -176,6 +216,7 @@ import javax.faces.application.FacesMessage;
 import javax.servlet.http.HttpServlet;
 import javax.faces.context.FacesContextWrapper;
 
+
 @WebServlet("/api/picture")
 public class PictureServlet extends HttpServlet {
 
@@ -205,7 +246,7 @@ public class PictureServlet extends HttpServlet {
             RandomGenerator randomGenerator = new RandomGenerator();
             String fileName = randomGenerator.getSaltString();
             OutputStream out = new FileOutputStream("C:\\Users\\Toki\\Documents\\GitHub\\tablet-polls\\images\\" + fileName);
-            String fileType = FacesContext.getCurrentInstance(fileName);
+
             copy(in, out);
             out.flush();
             out.close();
@@ -215,6 +256,7 @@ public class PictureServlet extends HttpServlet {
     }
 }
 */
+
 
 
 
