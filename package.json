@@ -61,5 +61,8 @@
     "tail": "^1.1.1",
     "text": "github:requirejs/text",
     "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "grunt-tomcat-developer": "^0.4.0"
   }
 }
