@@ -23,7 +23,7 @@ public class AbstractModel {
         try {
             if (conn == null) {
                 String userName = "root";
-                String password = "cthutqcthutq67";
+                String password = "12345";
                 String url = "jdbc:mysql://localhost:3306/test";
                 try {
                     Class.forName("com.mysql.jdbc.Driver");

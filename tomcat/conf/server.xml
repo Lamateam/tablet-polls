@@ -20,6 +20,7 @@
      Documentation at /docs/config/server.html
  -->
 <Server port="8005" shutdown="SHUTDOWN">
+
   <Listener className="org.apache.catalina.startup.VersionLoggerListener" />
   <!-- Security listener. Documentation at /docs/config/listeners.html
   <Listener className="org.apache.catalina.security.SecurityListener" />
@@ -130,6 +131,8 @@
         <!--
         <Valve className="org.apache.catalina.authenticator.SingleSignOn" />
         -->
+
+        <Context path="" docBase="ROOT" debug="0" reloadable="true"></Context>
 
         <!-- Access log processes all example.
              Documentation at: /docs/config/valve.html

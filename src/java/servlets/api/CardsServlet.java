@@ -48,22 +48,22 @@ public class CardsServlet extends HttpServlet {
     }
     @Override public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-            Convertor convertor = new Convertor();
-            JSONObject obj = convertor.RequestToJSON(request);
-            JSONObject result = new JSONObject();
+            Convertor convertor  = new Convertor();
+            JSONObject obj       = convertor.RequestToJSON(request);
+            JSONObject result    = new JSONObject();
 
             String stringPicture = (String) obj.get("picture");
-            String stringText = (String) obj.get("text");
-            String stringYear = (String) obj.get("year");
-            int isModerate = 1;
+            String stringText    = (String) obj.get("text");
+            String stringYear    = (String) obj.get("year");
+            int isModerate       = 1;
 
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            String created_at = dateFormat.format(new Date());
-            String updated_at = created_at;
+            // SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            // String created_at = dateFormat.format(new Date());
+            // String updated_at = created_at;
 
             if ((stringPicture.length() != 0) && (stringText.length() != 0) &&(stringYear.length() != 0)) {
 
-                String sql = "INSERT INTO cards (`picture`, `text`, `year`, `isModerate`, `created_at`, `updated_at`) VALUES ('" + (String) obj.get("picture") + "','" + (String) obj.get("text") + "','" + (String) obj.get("year") + "','" + (int) (isModerate) + "','" + (String) (created_at) + "','" + (String) (updated_at) + "')";
+                String sql = "INSERT INTO cards (`picture`, `text`, `year`, `isModerate`) VALUES ('" + (String) obj.get("picture") + "','" + (String) obj.get("text") + "','" + (String) obj.get("year") + "','" + (int) (isModerate) + "')";
 
                 CardsModel cardConnector = new CardsModel();
                 result.put("success", cardConnector.update(sql));
