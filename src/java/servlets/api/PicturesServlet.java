@@ -50,9 +50,9 @@ public class PicturesServlet extends HttpServlet {
             
             //gif, jpg, jpeg, png
             
-            if((ext == "gif") || (ext == "jpg") || (ext == "jpeg") || (ext == "png"))
-            part.write(uploadFilePath + File.separator + fileName);
-            
+            if ((ext == "gif") || (ext == "jpg") || (ext == "jpeg") || (ext == "png")) {
+                part.write(uploadFilePath + File.separator + fileName);
+            }
         }
  
         request.setAttribute("message", fileName + " File uploaded successfully!");
