@@ -10,11 +10,12 @@ import java.io.PrintWriter;
 public class LoginServlet extends HttpServlet {
     @Override public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-            if (request.getSession().getAttribute("user") != null) {
+            /*if (request.getSession().getAttribute("user") != null) {
                 response.sendRedirect("/profile");
             } else {
                 request.getRequestDispatcher("login.jsp").forward(request, response);
             }
+            */
         } catch (Exception e) {
             e.printStackTrace();
         }

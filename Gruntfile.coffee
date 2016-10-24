@@ -14,7 +14,7 @@ module.exports = (grunt) ->
     mkdir:
       dist:
         options:
-          create: [ "dist", "dist/WEB-INF", "dist/WEB-INF/classes" ]
+          create: [ "dist", "dist/WEB-INF", "dist/WEB-INF/classes"]
     copy:
       web:
         files: [
